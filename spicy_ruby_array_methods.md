@@ -28,7 +28,7 @@ end
 
 The **each** loop works similarly to the "for..in" loop. Ruby iterates over the **numbers** array and inputs the current element as the block parameter **number**. We can then access the element via **number** and print it to the console.
 
-Going forward, we may compare the other ruby array methods with "each" to see how the other array methods result in cleaner code.
+Going forward, we may compare the other ruby array methods with **each** to see how the other array methods result in cleaner code.
 
 ## Find
 
@@ -71,6 +71,7 @@ p find_student_with_each('David', students)
 ```
 
 ## Select
+
 If you want to filter an array to keep only the elements that match certain criteria, Ruby provides the **select** method. The **select** method is very similar to the **find** method, except it returns **all** elements that match the criteria instead of just the **first** one.
 
 As with the **find**, provide the **select** method with a block that returns true when the criteria is met.
@@ -112,6 +113,7 @@ p get_students_with_each(15, students)
 ```
 
 ## Sort
+
 Sometimes you may want to sort your array. Ruby has a method for that, and it's called **sort**. The **sort** method accepts an optional block with two parameters, say **first** and **second**, which returns 1 (if first > second), 0 (if first == second), or -1 (if first < second).
 
 Sort the students by age in ascending order and descending order:
@@ -130,7 +132,14 @@ def sort_students_asc(students)
   end
 end
 
+def sort_students_desc(students)
+  students.sort do |studentA, studentB|
+    studentB[:age] <=> studentA[:age]
+  end
+end
+
 p sort_students_asc(students)
+p sort_students_desc(students)
 ```
 
 Notice the use of the "<=>" (spaceship) operator. It returns 1 (if left side > right side), 0 (if left side == right side), or -1 (if left side < right side).
@@ -150,6 +159,7 @@ end
 ```
 
 ## Map
+
 You'll often want to take an array, do something to each element, and return a new array. This is where **map** comes in handy. The method **map** accepts a block which operates on each element of the array. The return value within the block becomes the new element in the new array.
 
 Let's say we wanted to take an array of numbers and return a new array with the square of each number:
@@ -209,7 +219,7 @@ p power_of_index_with_offset(numbers)
 
 If you need to combine all elements within an array into a single value, Ruby provides the **reduce** method, which is also aliased as **inject**. Both work the same, so we will use **reduce**. 
 
-The **reduce** method accepts and optional initial value and a block or a symbol. If a block is provided, it needs to accept two parameters: an accumulator and a parameter for the current element. If you provide a symbol, then each element of the array will be passed to the named method of the accumulator. Let's have a look!
+The **reduce** method accepts an optional initial value and a block or a symbol. If a block is provided, it needs to accept two parameters: an accumulator and a parameter for the current element. If you provide a symbol, then each element of the array will be passed to the named method of the accumulator. Let's have a look!
 
 What is the sum of all numbers in an array?
 ```ruby
