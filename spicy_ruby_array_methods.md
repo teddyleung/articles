@@ -328,14 +328,14 @@ And for the final trick to bring up the spice level, we'll talk about the Set un
 array1 = [1, 2, 3]
 array2 = [1, 2, 4]
 
+# Using Set union
+p array1 | array2
+# Prints [1, 2, 3, 4]
+
 # Using .concat then .uniq
 newArray = array1.concat(array2)
 # [1, 2, 3, 1, 2, 4]
 p newArray.uniq
-# Prints [1, 2, 3, 4]
-
-# Using Set union
-p array1 | array2
 # Prints [1, 2, 3, 4]
 ```
 
